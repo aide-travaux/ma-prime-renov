@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace MaPrimeRenov;
 
 use AideTravaux\ControllerInterface;
-use App\Model\ProfileInterface;
-use App\Model\ProjectInterface;
+use MaPrimeRenov\Model\ProfileInterface;
+use MaPrimeRenov\Model\ProjectInterface;
 
 class Controller implements ControllerInterface
 {

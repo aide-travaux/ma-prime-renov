@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace MaPrimeRenov\Model;
 
 use AideTravaux\ProfileInterface as Base;
 

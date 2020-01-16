@@ -1,6 +1,6 @@
 {
-    "name": "adrien-rosi/name",
-    "description": "description",
+    "name": "adrien-rosi/ma-prime-renov",
+    "description": "Aide Financière - Ma Prime Rénov'",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,7 +10,7 @@
         }
     ],
     "autoload": {
-        "psr-4": {"Namespace\\": ""},
+        "psr-4": {"MaPrimeRenov\\": ""},
         "exclude-from-classmap": [
             "/Tests/"
         ]

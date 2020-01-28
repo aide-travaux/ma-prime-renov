@@ -10,7 +10,7 @@ Retourne une Simulation de l'aide financière.
 
 ## Exemples
 
-``
+```
 <?php
 
 use AideTravaux\Model\ProfileInterface;
@@ -29,7 +29,7 @@ class Project implements ProjectInterface
 }
 
 $simulation = new Simulation(new Profile(), new Project());
-``
+```
 
 ## Sources
 

@@ -13,7 +13,7 @@ abstract class MaPrimeRenov
     /**
      * @property string
      */
-    const NAME = 'Ma Prime Rénov\'';
+    const NOM = 'Ma Prime Rénov\'';
 
     /**
      * @property string
@@ -24,12 +24,12 @@ abstract class MaPrimeRenov
     /**
      * @property string
      */
-    const DELAY = 'Sur présentation des factures - Avance possible';
+    const DELAI = 'Sur présentation des factures - Avance possible';
     
     /**
      * @property string
      */
-    const DISTRIBUTOR = 'Agence nationale de l\'habitat';
+    const DISTRIBUTEUR = 'Agence nationale de l\'habitat';
     
     /**
      * @property array
@@ -151,10 +151,10 @@ abstract class MaPrimeRenov
     public static function toArray(): array
     {
         return [
-            'name' => self::NAME,
+            'nom' => self::NOM,
             'description' => self::DESCRIPTION,
-            'delay' => self::DELAY,
-            'distributor' => self::DISTRIBUTOR,
+            'delai' => self::DELAI,
+            'distributeur' => self::DISTRIBUTEUR,
             'references' => self::REFERENCES,
             'conditions' => self::CONDITIONS
         ];

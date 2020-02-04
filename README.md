@@ -1,12 +1,66 @@
 # Ma Prime Rénov'
 
-## Description
+## Introduction
 
-Aide financière pour la rénovation énergétique - Ma Prime Rénov'.
+La classe MaPrimeRenov retourne toutes les informations relatives à l'aide financière Ma Prime Rénov'
 
-## Valeurs de retour
+## Constantes
 
-Retourne une Simulation de l'aide financière.
+**MaPrimeRenov::NOM**
+Le nom de l'aide financière
+
+**MaPrimeRenov::DESCRIPTION**
+Une description de l'aide financière
+
+**MaPrimeRenov::DELAI**
+Délai de versement de l'aide financière
+
+**MaPrimeRenov::DISTRIBUTEUR**
+Distributeur de l'aide financière
+
+**MaPrimeRenov::REFERENCES**
+Références légales ou institutionnelles de l'aide financière
+
+**MaPrimeRenov::CONDITIONS**
+Conditions d'accès de l'aide financière
+
+## Méthodes
+
+```
+MaPrimeRenov::get(DataInterface $model): ?float;
+```
+Retourne le montant calculé de l'aide financière sur la base des informations transmises
+
+```
+MaPrimeRenov::getBareme(DataInterface $model): ?array;
+```
+Retourne les barêmes en vigueur pour l'ouvrage transmis
+
+```
+MaPrimeRenov::getPlafondDepensesEligibles(DataInterface $model): float;
+```
+Retourne le plafond de dépenses éligibles calculé sur la base des informations transmises
+
+```
+MaPrimeRenov::getPlafondCouverture(DataInterface $model): float;
+```
+Retourne le plafond de couverture du coût des travaux par la prime calculé sur la base des informationstransmises
+
+```
+MaPrimeRenov::getPlafond(): int;
+```
+Retourne le plafond de l'aide financière
+
+```
+MaPrimeRenov::resolveConditions(ConditionInterface $model): array;
+```
+Retourne les conditions d'accès à l'aide et, pour chacune, si la condition est satisfaite sur la base des 
+informations transmises
+
+```
+MaPrimeRenov::isEligible(ConditionInterface $model): bool;
+```
+Retourne l'éligibilité du projet à l'aide financière sur la base des informations transmises
 
 ## Exemples
 

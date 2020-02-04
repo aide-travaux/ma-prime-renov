@@ -13,22 +13,79 @@ Retourne une Simulation de l'aide financière.
 ```
 <?php
 
-use AideTravaux\Model\ProfileInterface;
-use AideTravaux\Model\ProfileTrait;
-use AideTravaux\Model\ProjectInterface;
-use AideTravaux\Model\ProjectTrait;
-use MaPrimeRenov\Model\Simulation;
+use AideTravaux\MaPrimeRenov\Model\DataInterface;
+use AideTravaux\MaPrimeRenov\Model\ConditionInterface;
+use AideTravaux\MaPrimeRenov\MaPrimeRenov;
 
-class Profile implements ProfileInterface
+class Data implements DataInterface, ConditionInterface
 {
-    use ProfileTrait;
-}
-class Project implements ProjectInterface
-{
-    use ProjectTrait;
+
+    public function getMaPrimeRenovCodeTravaux(): string
+    {
+        return 'MPR-ENV-01';
+    }
+
+    public function getCategorieAnah(): string
+    {
+        return 'Modeste';
+    }
+
+    public function getTypePartie(): string
+    {
+        return 'Partie privative';
+    }
+
+    public function getSurfaceIsolant(): float
+    {
+        return (float) 100;
+    }
+
+    public function getQuotePart(): float
+    {
+        return (float) 1;
+    }
+
+    public function getNombreLogements(): int
+    {
+        return 1;
+    }
+
+    public function getNombreEquipement(): int
+    {
+        return 1;
+    }
+
+    public function getCoutTTC(): float
+    {
+        return (float) 15000;
+    }
+
+    public function getTypeLogement(): string
+    {
+        return 'Maison individuelle';
+    }
+
+    public function getStatutOccupantLogement(): string
+    {
+        return 'Propriétaire occupant';
+    }
+
+    public function getTypeOccupationLogement(): string
+    {
+        return 'Résidence principale';
+    }
+
+    public function getAgeLogement(): int
+    {
+        return 30;
+    }
 }
 
-$simulation = new Simulation(new Profile(), new Project());
+$data = new Data();
+
+MaPrimeRenov::get($data);
+MaPrimeRenov::resolveConditions($data);
+
 ```
 
 ## Sources

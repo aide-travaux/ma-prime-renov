@@ -3,6 +3,7 @@
 namespace AideTravaux\MaPrimeRenov\Tests\Utils;
 
 use PHPUnit\Framework\TestCase;
+use AideTravaux\MaPrimeRenov\MaPrimeRenov;
 use AideTravaux\MaPrimeRenov\Data\Entries;
 use AideTravaux\MaPrimeRenov\Model\ConditionInterface;
 use AideTravaux\MaPrimeRenov\Utils\ConditionsResolver;
@@ -15,6 +16,10 @@ class ConditionsResolverTest extends TestCase
     public function testResolveConditions($model)
     {
         $this->assertTrue(\is_array(ConditionsResolver::resolveConditions($model)));
+        $this->assertEquals(
+            \count(ConditionsResolver::resolveConditions($model)),
+            \count(MaPrimeRenov::CONDITIONS)
+        );
     }
 
     /**

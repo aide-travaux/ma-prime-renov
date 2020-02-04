@@ -15,7 +15,7 @@ class MaPrimeRenovTest extends TestCase
     public function testGet($model)
     {
         $value = MaPrimeRenov::get($model);
-        $this->assertTrue(\is_null($value) || \is_float($value));
+        $this->assertFalse(\is_null($value) || \is_float($value));
     }
 
     /**
@@ -66,7 +66,7 @@ class MaPrimeRenovTest extends TestCase
         $stub->method('getQuotePart')->willReturn((float) 1);
         $stub->method('getNombreLogements')->willReturn(1);
         $stub->method('getNombreEquipement')->willReturn(1);
-        $stub->method('getQuotePart')->willReturn((float) 1);        
+        $stub->method('getCoutTTC')->willReturn((float) 1);        
 
         return [ [ $stub ] ];
     }

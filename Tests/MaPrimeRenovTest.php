@@ -15,7 +15,7 @@ class MaPrimeRenovTest extends TestCase
     public function testGet($model)
     {
         $value = MaPrimeRenov::get($model);
-        $this->assertFalse(\is_null($value) || \is_float($value));
+        $this->assertTrue(\is_null($value) || \is_float($value));
     }
 
     /**

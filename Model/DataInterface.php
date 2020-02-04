@@ -29,6 +29,12 @@ interface DataInterface
     public function getSurfaceIsolant(): float;
 
     /**
+     * Retourne la surface de paroie protégée
+     * @return float
+     */
+    public function getSurfaceProtegee(): float;
+
+    /**
      * Retourne la quote-part des travaux supportée par le demandeur
      * @return float
      */

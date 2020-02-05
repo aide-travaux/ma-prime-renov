@@ -1,6 +1,6 @@
 {
-    "name": "adrien-rosi/ma-prime-renov",
-    "description": "Aide Financière - Ma Prime Rénov'",
+    "name": "aide-travaux/ma-prime-renov",
+    "description": "Aide travaux - Ma Prime Rénov'",
     "type": "library",
     "license": "MIT",
     "authors": [

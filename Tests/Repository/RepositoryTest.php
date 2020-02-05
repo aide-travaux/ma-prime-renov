@@ -7,7 +7,7 @@ use AideTravaux\MaPrimeRenov\Repository\Repository;
 
 class RepositoryTest extends TestCase
 {
-    public function testGetOneOrNull($constant)
+    public function testGetOneOrNull()
     {
         $this->assertTrue(\is_string(Repository::getOneOrNull('MPR-ENV-01')));
         $this->assertNull(Repository::getOneOrNull(''));

@@ -4,7 +4,7 @@ namespace AideTravaux\MaPrimeRenov\Database;
 
 use AideTravaux\MaPrimeRenov\Model\DataInterface;
 
-trait DBTrait
+trait DatabaseTrait
 {
     /**
      * @inheritdoc

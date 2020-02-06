@@ -3,13 +3,13 @@
 namespace AideTravaux\MaPrimeRenov\Database\TH;
 
 use AideTravaux\MaPrimeRenov\Data\Entries;
-use AideTravaux\MaPrimeRenov\Database\DBInterface;
-use AideTravaux\MaPrimeRenov\Database\DBTrait;
+use AideTravaux\MaPrimeRenov\Database\DatabaseInterface;
+use AideTravaux\MaPrimeRenov\Database\DatabaseTrait;
 use AideTravaux\MaPrimeRenov\Model\DataInterface;
 
-abstract class TH12 implements DBInterface
+abstract class TH12 implements DatabaseInterface
 {
-    use DBTrait;
+    use DatabaseTrait;
     
     /**
      * @property

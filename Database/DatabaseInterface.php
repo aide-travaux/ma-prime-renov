@@ -7,7 +7,7 @@ use AideTravaux\MaPrimeRenov\Model\DataInterface;
 /**
  * @see https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000041400376
  */
-interface DBInterface
+interface DatabaseInterface
 {
     /**
      * Retourne le montant de l'aide financière

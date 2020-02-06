@@ -26,22 +26,6 @@ class DatabaseTest extends TestCase
     /**
      * @dataProvider classProvider
      */
-    public function testClassInterface($class)
-    {
-        $this->assertTrue(\in_array(DBInterface::class, \class_implements($class)));
-    }
-
-    /**
-     * @dataProvider classProvider
-     */
-    public function testClassTrait($class)
-    {
-        $this->assertTrue(\in_array(DBTrait::class, \class_uses($class)));
-    }
-
-    /**
-     * @dataProvider classProvider
-     */
     public function testClassConstant($class)
     {
         $reflect = new \ReflectionClass($class);

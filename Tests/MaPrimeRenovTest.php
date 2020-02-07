@@ -65,7 +65,7 @@ class MaPrimeRenovTest extends TestCase
         $stub->method('getSurfaceIsolant')->willReturn((float) 10);
         $stub->method('getQuotePart')->willReturn((float) 1);
         $stub->method('getNombreLogements')->willReturn(1);
-        $stub->method('getNombreEquipement')->willReturn(1);
+        $stub->method('getNombreFenetres')->willReturn(1);
         $stub->method('getCoutTTC')->willReturn((float) 1);        
 
         return [ [ $stub ] ];

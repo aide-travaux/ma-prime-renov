@@ -1,95 +1,122 @@
 <?php
 
-namespace AideTravaux\MaPrimeRenov\Tests\Database;
+namespace AideTravaux\MaPrimeRenov\Tests\ENV\Database;
 
 use PHPUnit\Framework\TestCase;
+use AideTravaux\MaPrimeRenov\Data\Entries;
 use AideTravaux\MaPrimeRenov\Database\ENV\ENV03;
 use AideTravaux\MaPrimeRenov\Model\DataInterface;
 
 class ENV03Test extends TestCase
 {
-    public function getDefaultMock()
+    /**
+     * @dataProvider modelMontantProvider
+     */
+    public function testGetMontant($model, $expect)
     {
-        $stub = $this->createMock(DataInterface::class);
-
-        $stub->method('getMaPrimeRenovCodeTravaux')->willReturn('');
-        $stub->method('getSurfaceIsolant')->willReturn((float) 0);
-        $stub->method('getSurfaceProtegee')->willReturn((float) 0);
-        $stub->method('getQuotePart')->willReturn((float) 0);
-        $stub->method('getNombreLogements')->willReturn(0);
-        $stub->method('getNombreEquipement')->willReturn(0);
-        $stub->method('getCoutTTC')->willReturn((float) 0);
-
-        return $stub;
+        $stub = $this->getMock($model);
+        $this->assertEquals(ENV03::getMontant($stub), $expect);
     }
 
     /**
-     * @dataProvider mockProvider
+     * @dataProvider modelMontantForfaitaireProvider
      */
-    public function testMethods($model)
+    public function testGetMontantForfaitaire($model, $expect)
     {
-        $stub = $this->getDefaultMock();
-
-        foreach ($model as $key => $value) {
-            $stub->method($key)->willReturn($value);
-        }
-
-        $this->assertTrue(\is_float(ENV03::getMontant($stub)));
-        $this->assertTrue(\is_float(ENV03::getPlafond($stub)));
-        $this->assertTrue(\is_int(ENV03::getMontantForfaitaire($stub)));
-        $this->assertTrue(\is_int(ENV03::getMontantForfaitaire($stub)));
-        $this->assertTrue(\is_array(ENV03::toArray($stub)));
+        $stub = $this->getMock($model);
+        $this->assertEquals(ENV03::getMontantForfaitaire($stub), $expect);
     }
 
-    public function mockProvider()
+    /**
+     * @dataProvider modelPlafondProvider
+     */
+    public function testGetPlafond($model, $expect)
+    {
+        $stub = $this->getMock($model);
+        $this->assertEquals(ENV03::getPlafond($stub), $expect);
+    }
+
+    public function testGetPlafondForfaitaire()
+    {
+        $stub = $this->createMock(DataInterface::class);
+        $this->assertEquals(ENV03::getPlafondForfaitaire($stub), 75);
+    }
+
+    public function getMock(array $model)
+    {
+        $stub = $this->createMock(DataInterface::class);
+
+        foreach ($model as $method => $value) {
+            $stub->method($method)->willReturn($value);
+        }
+        return $stub;
+    }
+
+    public function modelMontantProvider()
     {
         return [
-            [
-                'model' => [
-                    'getCategorieAnah' => 'Modeste',
-                    'getTypePartie' => 'Partie privative'
-                ]
-            ], [
-                'model' => [
-                    'getCategorieAnah' => 'Modeste',
-                    'getTypePartie' => 'Partie commune'
-                ]
-            ], [
-                'model' => [
-                    'getCategorieAnah' => 'Très modeste',
-                    'getTypePartie' => 'Partie privative'
-                ]
-            ], [
-                'model' => [
-                    'getCategorieAnah' => 'Très modeste',
-                    'getTypePartie' => 'Partie commune'
-                ]
-            ], [
-                'model' => [
-                    'getCategorieAnah' => 'Modeste',
-                    'getTypePartie' => ''
-                ]
-            ], [
-                'model' => [
-                    'getCategorieAnah' => '',
-                    'getTypePartie' => 'Partie privative'
-                ]
-            ], [
-                'model' => [
-                    'getCategorieAnah' => 'Très modeste',
-                    'getTypePartie' => ''
-                ]
-            ], [
-                'model' => [
-                    'getCategorieAnah' => '',
-                    'getTypePartie' => 'Partie commune'
-                ]
-            ], [
-                'model' => [
-                    'getCategorieAnah' => '',
-                    'getTypePartie' => ''
-                ]
-            ]
+            [ 'model' => [
+                'getCategorieAnah' => Entries::CATEGORIES_ANAH['cateogrie_anah_1'],
+                'getTypePartie' => Entries::TYPE_PARTIES['type_partie_1'],
+                'getSurfaceIsolant' => (float) 100
+            ], 20 * 100],
+            [ 'model' => [
+                'getCategorieAnah' => Entries::CATEGORIES_ANAH['cateogrie_anah_1'],
+                'getTypePartie' => Entries::TYPE_PARTIES['type_partie_2'],
+                'getSurfaceIsolant' => (float) 100,
+                'getQuotePart' => (float) 0.5
+            ], 20 * 100 * 0.5],
+            [ 'model' => [], 0]
         ];
     }
+
+    public function modelMontantForfaitaireProvider()
+    {
+        return [
+            [ 'model' => [
+                'getCategorieAnah' => Entries::CATEGORIES_ANAH['cateogrie_anah_1'],
+                'getTypePartie' => Entries::TYPE_PARTIES['type_partie_1']
+            ], 20],
+            [ 'model' => [
+                'getCategorieAnah' => Entries::CATEGORIES_ANAH['cateogrie_anah_1'],
+                'getTypePartie' => Entries::TYPE_PARTIES['type_partie_2']
+            ], 20],
+            [ 'model' => [
+                'getCategorieAnah' => Entries::CATEGORIES_ANAH['cateogrie_anah_1'],
+                'getTypePartie' => ''
+            ], 0],
+            [ 'model' => [
+                'getCategorieAnah' => Entries::CATEGORIES_ANAH['cateogrie_anah_2'],
+                'getTypePartie' => Entries::TYPE_PARTIES['type_partie_1']
+            ], 25],
+            [ 'model' => [
+                'getCategorieAnah' => Entries::CATEGORIES_ANAH['cateogrie_anah_2'],
+                'getTypePartie' => Entries::TYPE_PARTIES['type_partie_2']
+            ], 25],
+            [ 'model' => [
+                'getCategorieAnah' => Entries::CATEGORIES_ANAH['cateogrie_anah_1'],
+                'getTypePartie' => ''
+            ], 0],
+            [ 'model' => [], 0]
+        ];
+    }
+
+    public function modelPlafondProvider()
+    {
+        return [
+            [ 'model' => [
+                'getCategorieAnah' => Entries::CATEGORIES_ANAH['cateogrie_anah_1'],
+                'getTypePartie' => Entries::TYPE_PARTIES['type_partie_1'],
+                'getSurfaceIsolant' => (float) 100
+            ], 75 * 100],
+            [ 'model' => [
+                'getCategorieAnah' => Entries::CATEGORIES_ANAH['cateogrie_anah_1'],
+                'getTypePartie' => Entries::TYPE_PARTIES['type_partie_2'],
+                'getSurfaceIsolant' => (float) 100,
+                'getQuotePart' => (float) 0.5
+            ], 75 * 100 * 0.5],
+            [ 'model' => [], 0]
+        ];
+    }
+
 }

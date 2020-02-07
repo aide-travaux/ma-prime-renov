@@ -26,7 +26,7 @@ abstract class ENV05 implements DatabaseInterface
      */
     public static function getMontant(DataInterface $model): float
     {
-        return self::getMontantForfaitaire($model) * $model->getNombreEquipement();
+        return (float) self::getMontantForfaitaire($model) * $model->getNombreFenetres();
     }
 
     /**
@@ -34,7 +34,7 @@ abstract class ENV05 implements DatabaseInterface
      */
     public static function getPlafond(DataInterface $model): float
     {
-        return self::getPlafondForfaitaire($model) * $model->getNombreEquipement();
+        return (float) self::getPlafondForfaitaire($model) * $model->getNombreFenetres();
     }
 
     /**
@@ -67,6 +67,11 @@ abstract class ENV05 implements DatabaseInterface
      */
     public static function getPlafondForfaitaire(DataInterface $model): int
     {
-        return 1000;
+        switch ($model->getTypePartie()) {
+            case Entries::TYPE_PARTIES['type_partie_1']:
+                return 1000;
+            default:
+                return 0;
+        }
     }
 }

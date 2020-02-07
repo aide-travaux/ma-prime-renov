@@ -19,7 +19,7 @@ interface DataInterface
 
     public function getNombreLogements(): int;
 
-    public function getNombreEquipement(): int;
+    public function getNombreFenetres(): int;
 
     public function getCoutTTC(): float;
 

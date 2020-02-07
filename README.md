@@ -104,7 +104,7 @@ class Data implements DataInterface, ConditionInterface
         return 1;
     }
 
-    public function getNombreEquipement(): int
+    public function getNombreFenetres(): int
     {
         return 1;
     }

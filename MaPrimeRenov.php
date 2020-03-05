@@ -111,9 +111,9 @@ abstract class MaPrimeRenov
     
         switch ($model->getCategorieAnah()) {
             case Entries::CATEGORIES_ANAH['cateogrie_anah_1']:
-                return (float) $expenses * 0.75;
+                return (float) $expenses * 0.75 - $model->getMontantAides();
             case Entries::CATEGORIES_ANAH['cateogrie_anah_2']:
-                return (float) $expenses * 0.9;
+                return (float) $expenses * 0.9 - $model->getMontantAides();
             default:
                 return (float) 0;
         }

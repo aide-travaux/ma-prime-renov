@@ -23,4 +23,6 @@ interface DataInterface
 
     public function getCoutTTC(): float;
 
+    public function getMontantAides(): float;
+
 }

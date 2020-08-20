@@ -68,18 +68,18 @@ abstract class ENV01 implements DatabaseInterface
             case Entries::CATEGORIES_ANAH['cateogrie_anah_1']:
                 switch ($model->getTypePartie()) {
                     case Entries::TYPE_PARTIES['type_partie_1']:
-                        return 75;
+                        return 60;
                     case Entries::TYPE_PARTIES['type_partie_2']:
-                        return 75;
+                        return 60;
                     default:
                         return 0;
                 }
             case Entries::CATEGORIES_ANAH['cateogrie_anah_2']:
                 switch ($model->getTypePartie()) {
                     case Entries::TYPE_PARTIES['type_partie_1']:
-                        return 100;
+                        return 75;
                     case Entries::TYPE_PARTIES['type_partie_2']:
-                        return 100;
+                        return 75;
                     default:
                         return 0;
                 }
